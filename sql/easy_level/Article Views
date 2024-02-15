@@ -1,0 +1,12 @@
+SELECT DISTINCT author_id AS id
+FROM Views
+WHERE author_id = viewer_id;
+
+
+--or
+
+SELECT author_id AS id
+FROM Views
+WHERE author_id = viewer_id
+GROUP BY author_id
+HAVING COUNT(author_id) >= 1;
