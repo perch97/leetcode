@@ -1,0 +1,29 @@
+SELECT 
+    pt.firstName,
+    pt.lastName,
+    adt.city,
+    adt.state
+FROM (
+    SELECT 
+        personId,
+        firstName,
+        lastName
+    FROM Person 
+) AS pt
+LEFT JOIN (
+    SELECT 
+        personId,
+        city,
+        state
+    FROM Address
+) AS adt ON pt.personId = adt.personId;
+
+--Or use brief solution
+
+SELECT 
+    p.firstName,
+    p.lastName,
+    a.city,
+    a.state
+FROM Person p
+LEFT JOIN Address a ON p.personId = a.personId;
