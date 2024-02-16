@@ -1,0 +1,9 @@
+SELECT e.name
+FROM Employee e
+JOIN (
+    SELECT managerId, COUNT(*) AS directReports
+    FROM Employee
+    WHERE managerId IS NOT NULL
+    GROUP BY managerId
+) AS subquery ON e.id = subquery.managerId
+WHERE subquery.directReports >= 5;
